@@ -22,7 +22,7 @@ module.exports = {
           DEFAULT: "rgba(59,60,152,0.03)",
           100: "rgba(59,60,152,0.02)",
         },
-        grey: "#747A88",
+        gray: "#747A88",
       },
       backgroundImage: {
         'pattern': "url('/pattern.png')",

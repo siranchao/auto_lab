@@ -67,7 +67,7 @@ export default function CarDetails({ isOpen, closeModal, car }: CarDetailsProps)
                                         <div className="mt-3 flex flex-wrap gap-4">
                                             {Object.entries(car).map(([key, value]) => (
                                                 <div className="flex justify-between gap-5 w-full text-right" key={key}>
-                                                    <p className="text-grey capitalize">{key.split("_").join(" ")}</p>
+                                                    <p className="text-gray capitalize">{key.split("_").join(" ")}</p>
                                                     <p className="text-black-100 font-semibold">{value}</p>
                                                 </div>
                                             ))}
