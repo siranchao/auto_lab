@@ -3,7 +3,7 @@ import { fetchCars } from "@/utils"
 
 export default async function Home() {
   const allCars = await fetchCars()
-  const isDataEmpty = allCars.length === 0 || !allCars || !Array.isArray(allCars)
+  const isDataEmpty = !allCars || !Array.isArray(allCars) || allCars.length === 0
 
   return (
     <main className="overflow-hidden">
@@ -35,7 +35,7 @@ export default async function Home() {
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-            <p>{ allCars?.message }</p>
+            {/* <p>{ allCars?.message }</p> */}
           </div>
         )}
 

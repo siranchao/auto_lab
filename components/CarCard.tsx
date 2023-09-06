@@ -3,11 +3,11 @@ import Image from "next/image"
 import { useState } from "react"
 import { CarProps } from "@/types"
 import { CustomBtn, CarDetails } from "."
-import { calcRentRate } from "@/utils"
+import { calcRentRate, carImageUrl } from "@/utils"
 
 interface CarCardProps {
     car: CarProps;
-  }
+}
 
 
 
@@ -34,11 +34,11 @@ export default function CarCard({car}: CarCardProps) {
                 </p>
 
                 <div className="relative w-full h-40 my-3 object-contain">
-                    <Image src="/hero.png" alt="car-image" fill priority className="object-contain" />
+                    <Image src={carImageUrl(car)} alt="car-image" fill priority className="object-contain" />
                 </div>
 
                 <div className="relative flex w-full mt-2">
-                    <div className="flex group-hover:invisible w-full justify-between text-gray">
+                    <div className="flex group-hover:invisible w-full justify-between text-grey">
                         <div className="flex flex-col justify-center items-center gap-2">
                             <Image src="/steering-wheel.svg" alt="steering-wheel" width={20} height={20} />
                             <p className="text-[14px]">{car.transmission === 'a' ? "Automatic" : "Manual"}</p>

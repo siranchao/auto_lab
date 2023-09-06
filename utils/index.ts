@@ -1,28 +1,26 @@
+import { CarProps } from "@/types";
 
-export async function fetchCars() {
+export async function fetchCars(): Promise<CarProps[]> {
     const header = {
 		'X-RapidAPI-Key': process.env.NEXT_PUBLIC_API_KEY as string,
 		'X-RapidAPI-Host': process.env.NEXT_PUBLIC_API_HOST as string
 	}
+    const url = new URL('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=yaris');
 
-    const url: string = 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla';
+    // url.searchParams = new URLSearchParams({
+    //     model: 'corolla'
+    // })
 
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: header
-        });
-        
-        const result = await response.json()
-        
-        return result
-    } catch (error) {
-        console.error(error);
-    }
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: header
+    });
+
+    const result = await response.json()
+    return result
 }
 
-
-export function calcRentRate(city_mpg: number, year: number) {
+export function calcRentRate(city_mpg: number, year: number): string {
     const baseRatePerDay: number = 50
     const mileageFactor: number = 0.1
     const ageFactor: number = 0.05
@@ -32,4 +30,21 @@ export function calcRentRate(city_mpg: number, year: number) {
     const ratePerDay = baseRatePerDay + mileageRate + ageRate
 
     return ratePerDay.toFixed(0)
+}
+
+export function carImageUrl(car: CarProps, angle?: string): string {
+    const { make, year, model } = car
+
+    const url = new URL('https://cdn.imagin.studio/getimage')
+    
+    url.searchParams.append('customer', process.env.NEXT_PUBLIC_IMAGE_API_KEY as string)
+    url.searchParams.append('make', make)
+    url.searchParams.append('modelFamily', model.split(' ')[0])
+    url.searchParams.append('zoomType', 'fullscreen')
+    url.searchParams.append('modelYear', year.toString())
+    if(angle) {
+        url.searchParams.append('angle', angle)
+    }
+
+    return url.href
 }

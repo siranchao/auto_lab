@@ -21,6 +21,7 @@ export default function SearchBar() {
                         manufacturer={manufacturer} 
                         setManufacturer={setManufacturer}
                     />
+                    
                 </div>
 
             </form>
