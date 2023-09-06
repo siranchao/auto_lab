@@ -1,15 +1,16 @@
 import { CarProps } from "@/types";
+import { FilterProps } from "@/types";
 
-export async function fetchCars(): Promise<CarProps[]> {
+export async function fetchCars(filters: FilterProps): Promise<CarProps[]> {
     const header = {
 		'X-RapidAPI-Key': process.env.NEXT_PUBLIC_API_KEY as string,
 		'X-RapidAPI-Host': process.env.NEXT_PUBLIC_API_HOST as string
 	}
-    const url = new URL('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=yaris');
+    const url = new URL('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars');
 
-    // url.searchParams = new URLSearchParams({
-    //     model: 'corolla'
-    // })
+    Object.entries(filters).forEach(([key, value]) => {
+        url.searchParams.append(key, value)
+    })
 
     const response = await fetch(url, {
         method: 'GET',

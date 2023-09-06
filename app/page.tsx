@@ -1,8 +1,18 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from "@/components"
 import { fetchCars } from "@/utils"
 
-export default async function Home() {
-  const allCars = await fetchCars()
+
+const YEAR = 2022
+const LIMIT = 12
+
+export default async function Home({searchParams}: any) {
+  const allCars = await fetchCars({
+    make: searchParams.make || "",
+    model: searchParams.model || "",
+    year: searchParams.year || YEAR,
+    fuel_type: searchParams.fuel || "",
+    limit: searchParams.limit || LIMIT
+  })
   const isDataEmpty = !allCars || !Array.isArray(allCars) || allCars.length === 0
 
   return (
@@ -34,8 +44,8 @@ export default async function Home() {
           </section>
         ) : (
           <div className="home__error-container">
-            <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-            {/* <p>{ allCars?.message }</p> */}
+            <h3 className="text-black text-xl font-bold">Oops, no results</h3>
+            <p className="text-gray-500">Please try again later</p>
           </div>
         )}
 

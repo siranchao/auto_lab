@@ -47,18 +47,18 @@ export default function CarDetails({ isOpen, closeModal, car }: CarDetailsProps)
 
                                     <div className="flex-1 flex-col gap-3">
                                         <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg mb-1">
-                                            <Image src={carImageUrl(car)} alt="car-image" fill priority className="object-contain" />
+                                            <Image src={carImageUrl(car)} alt="car-image" fill priority className="object-contain" sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"/>
                                         </div>
 
                                         <div className="flex gap-3">
                                             <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg ">
-                                                <Image src={carImageUrl(car, '29')} alt="car-image" fill priority className="object-contain" />
+                                                <Image src={carImageUrl(car, '29')} alt="car-image" fill priority className="object-contain" sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"/>
                                             </div>
                                             <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
-                                                <Image src={carImageUrl(car, '28')} alt="car-image" fill priority className="object-contain" />
+                                                <Image src={carImageUrl(car, '28')} alt="car-image" fill priority className="object-contain" sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"/>
                                             </div>
                                             <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
-                                                <Image src={carImageUrl(car, '13')} alt="car-image" fill priority className="object-contain" />
+                                                <Image src={carImageUrl(car, '13')} alt="car-image" fill priority className="object-contain" sizes="(max-width: 768px) 100%, (max-width: 1200px) 100%, 100%"/>
                                             </div>
                                         </div>
                                     </div>
