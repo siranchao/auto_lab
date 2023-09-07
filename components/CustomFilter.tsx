@@ -10,13 +10,11 @@ export default function CustomFilter({title, options}: CustomFilterProps) {
     const [selected, setSelected] = useState<OptionProps>(options[0])
     const { filter, updateFilter } = useContext(FilterContext)
 
-    useEffect(() => {
-        if(selected.value) {
-            if(selected.value[0] === '2') {
-                updateFilter({...filter, year: parseInt(selected.value)})
-            } else {
-                updateFilter({...filter, fuel: selected.value})
-            }
+    useEffect(() => {      
+        if(selected.value[0] === '2') {
+            updateFilter({...filter, year: parseInt(selected.value)})
+        } else {
+            updateFilter({...filter, fuel: selected.value})
         }
     }, [selected.value])
 

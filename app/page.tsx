@@ -1,10 +1,9 @@
 'use client'
-import { Hero, SearchBar, CustomFilter, CarCard, ShowMore } from "@/components"
+import { Hero, SearchBar, CustomFilter, CarCard, ShowMore, Loader} from "@/components"
 import { fetchCars } from "@/utils"
 import { fuels, yearsOfProduction, LIMIT, YEAR } from "@/constants"
 import { useState, useEffect } from "react"
 import { CarProps } from "@/types"
-import Image from "next/image"
 import { Filter, FilterContext } from "@/contexts"
 
 
@@ -12,6 +11,9 @@ import { Filter, FilterContext } from "@/contexts"
 export default function Home() {
   const [allCars, setAllCars] = useState<CarProps[]>([])
   const [loading, setLoading] = useState<boolean>(false)
+  const [currentItems, setCurrentItems] = useState<number>(0)
+  const [eof, setEof] = useState<boolean>(false)
+
   const [filter, setFilter] = useState<Filter>({
     make: "",
     model: "",
@@ -35,7 +37,15 @@ export default function Home() {
         fuel_type: filter.fuel || "",
         limit: filter.limit || LIMIT
       })
-      setAllCars(data)
+
+      if(currentItems === data.length) {
+        setEof(true)
+      } else {
+        setCurrentItems(data.length)
+        setEof(false)
+        setAllCars(data)
+      }
+      
     } catch(error) {
       console.log(error)
     } finally {
@@ -77,31 +87,19 @@ export default function Home() {
             </div>
           </div>
 
-          {allCars.length > 0 ? (
+          { loading ? <Loader /> : allCars.length > 0 ? (
             <section>
               <div className="home__cars-wrapper">
                 {allCars?.map((car, index) => (
                   <CarCard key={index} car={car} />
                 ))}
               </div>
-
-              {loading ? (
-                <div className="mt-16 w-full flex-center">
-                  <Image
-                    src="/tire.svg"
-                    alt="loader"
-                    width={50}
-                    height={50}
-                    className="object-contain"
-                  />
-                </div>
-              ) : (
-                <ShowMore 
+             
+              <ShowMore 
                   pageNumber={ filter.limit / LIMIT }
-                  isNext={ filter.limit < allCars?.length}
-                />
-              )}
-
+                  isEnd={eof}
+              />
+             
             </section>
           ) : (
             <div className="home__error-container">

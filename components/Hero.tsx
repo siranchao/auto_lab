@@ -4,8 +4,8 @@ import Image from "next/image"
 
 export default function Hero() {
 
-    function handleScroll() {
-        
+    const jumpTo = (position: number) => {
+        window.scrollTo({ top: position, behavior: 'smooth' })
     }
 
 
@@ -20,7 +20,7 @@ export default function Hero() {
                         title="Explore Cars" 
                         btnType="button"
                         styles="bg-primary-blue text-white rounded-full mt-10" 
-                        handleClick={handleScroll} 
+                        handleClick={() => jumpTo(900)} 
                     />
                 </div>
 
