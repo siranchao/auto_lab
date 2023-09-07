@@ -1,41 +1,23 @@
 'use client';
 import { SearchManufacturer } from ".";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { FilterContext } from "@/contexts";
 
 
 export default function SearchBar() {
-    const router = useRouter();
     const [manufacturer, setManufacturer] = useState<string>("")
     const [model, setModel] = useState<string>("")
+    const { filter, updateFilter } = useContext(FilterContext)
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(manufacturer === ''&& model === '') {
             return
         }
-        updateSearchParams(manufacturer.toLowerCase(), model.toLowerCase())
+        updateFilter({...filter, make: manufacturer, model: model})
     }
 
-    const updateSearchParams = (manufacturer: string, model: string) => {
-        const searchParams = new URLSearchParams(window.location.search);
-
-        if(model) {
-            searchParams.set('model', model)
-        } else {
-            searchParams.delete('model')
-        }
-
-        if(manufacturer) {
-            searchParams.set('make', manufacturer)
-        } else {
-            searchParams.delete('make')
-        }
-
-        const pathName = `${window.location.pathname}?${searchParams.toString()}`
-        router.push(pathName)
-    }
 
     const SearchBtn = ({otherClasses}: {otherClasses: string}) => (
         <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
@@ -67,7 +49,7 @@ export default function SearchBar() {
                         type="text" 
                         name="model" 
                         value={model} 
-                        onChange={(e) => setModel(e.target.value)} 
+                        onChange={(e) => setModel(e.target.value)}
                         placeholder="Model"
                         className="searchbar__input"
                     />

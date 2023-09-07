@@ -1,17 +1,16 @@
 'use client'
-import { useRouter } from "next/navigation"
 import { ShowMoreProps } from "@/types"
 import { CustomBtn } from "."
 import { LIMIT } from "@/constants"
-import { updateSearchParams } from "@/utils"
+import { FilterContext } from "@/contexts"
+import { useContext } from "react"
 
 export default function ShowMore({ pageNumber, isNext }: ShowMoreProps) {
-    const router = useRouter()
+    const { filter, updateFilter } = useContext(FilterContext)
 
     const handleNavigation = () => {
         const newLimit: number = (pageNumber + 1) * LIMIT  
-        const newPathName: string = updateSearchParams('limit', newLimit.toString())
-        router.push(newPathName)
+        updateFilter({...filter, limit: newLimit})
     }
 
 
