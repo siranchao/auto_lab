@@ -1,11 +1,11 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from "@/components"
 import { fetchCars } from "@/utils"
-
+import { fuels, yearsOfProduction } from "@/constants"
 
 const YEAR = 2022
 const LIMIT = 12
 
-export default async function Home({searchParams}: any) {
+export default async function Home({ searchParams }: any) {
   const allCars = await fetchCars({
     make: searchParams.make || "",
     model: searchParams.model || "",
@@ -29,8 +29,8 @@ export default async function Home({searchParams}: any) {
           <SearchBar />
 
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            <CustomFilter title="fuel" options={fuels}/>
+            <CustomFilter title="year" options={yearsOfProduction}/>
           </div>
         </div>
 
