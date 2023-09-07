@@ -51,8 +51,8 @@ export function carImageUrl(car: CarProps, angle?: string): string {
 }
 
 
-export function updateSearchParams(type: string, value: string) {
-    const searchParams = new URLSearchParams(window.location.search);
+export function updateSearchParams(type: string, value: string): string {
+    const searchParams: URLSearchParams = new URLSearchParams(window.location.search);
     searchParams.set(type, value)
     return `${window.location.pathname}?${searchParams.toString()}`
 }

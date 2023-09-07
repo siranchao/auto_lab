@@ -99,3 +99,6 @@ export const manufacturers = [
       ],
     },
   ];
+
+export const YEAR = 2022
+export const LIMIT = 12

@@ -1,9 +1,8 @@
-import { Hero, SearchBar, CustomFilter, CarCard } from "@/components"
+import { Hero, SearchBar, CustomFilter, CarCard, ShowMore } from "@/components"
 import { fetchCars } from "@/utils"
-import { fuels, yearsOfProduction } from "@/constants"
+import { fuels, yearsOfProduction, LIMIT, YEAR } from "@/constants"
 
-const YEAR = 2022
-const LIMIT = 12
+
 
 export default async function Home({ searchParams }: any) {
   const allCars = await fetchCars({
@@ -41,6 +40,11 @@ export default async function Home({ searchParams }: any) {
                 <CarCard key={index} car={car} />
               ))}
             </div>
+
+            <ShowMore 
+              pageNumber={(searchParams.limit || LIMIT) / LIMIT}
+              isNext={(searchParams.limit || LIMIT) < allCars?.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
