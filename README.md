@@ -4,12 +4,12 @@
 [![Next.js](https://img.shields.io/badge/next.js-%23663399.svg?&style=for-the-badge&logo=Next.js&logoColor=white)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-%23339933.svg?&style=for-the-badge&logo=TypeScript&logoColor=white)]()
 
-CarHub a frontend application built with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). Using latest [Next.js](https://nextjs.org/) framework.
+CarHub is a frontend application built with [React](https://react.dev/) and [TypeScript](https://www.typescriptlang.org/). Using latest [Next.js](https://nextjs.org/) framework.
 
 ## Project Overview:
 
-- This demo app simulates a car rental application in real business settings. User can search, filter and browse car information.
-- The app showcase the ability to use latest React and Next.js to create a hybrid frontend app with both SSR and CSR.
+- This demo app simulates a car rental appfor real business settings.
+- Showcase the ability to use latest React and Next.js to create a hybrid frontend with both SSR and CSR.
 - The project is for learning purposes only and using free public APIs from RapidAPI.
 - This is frontend project and only cover the entry point of the app. Backend code is not included.
 
