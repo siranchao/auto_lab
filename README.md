@@ -17,7 +17,7 @@ CarHub is a frontend application built with [React](https://react.dev/) and [Typ
 
 - Including: React, Next 13, TypeScript, and TailwindCSS
 - Deployed on Vercel
-- App URL: [N/A](#)
+- App URL: [https://auto-lab-gamma.vercel.app/](https://auto-lab-gamma.vercel.app/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
