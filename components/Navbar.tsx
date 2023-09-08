@@ -1,9 +1,12 @@
+'use client'
 import Link from "next/link"
 import Image from "next/image"
 import { CustomBtn } from "."
+import { useContext } from "react"
+import { ModalContext } from "@/contexts"
 
 export default function Navbar() {
-
+    const { openModal } = useContext(ModalContext)
 
     return (
         <>
@@ -13,7 +16,7 @@ export default function Navbar() {
                         <Image src="/logo.svg" alt="logo" width={118} height={18} className="object-contain"/>
                     </Link>
 
-                    <CustomBtn title="Sign in" btnType="button" styles="text-primary-blue rounded-full bg-white min-w-[130px]" />
+                    <CustomBtn title="Sign in" btnType="button" styles="text-primary-blue rounded-full bg-white min-w-[130px]" handleClick={openModal}/>
                 </nav>
 
             </header>

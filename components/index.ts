@@ -10,6 +10,8 @@ import CarCard from "./CarCard";
 import CarDetails from "./CarDetails";
 import ShowMore from "./ShowMore";
 import Loader from "./Loader";
+import Modal from "./Modal";
+import LoginLayout from "./LoginLayout";
 
 export {
     Hero,
@@ -22,5 +24,7 @@ export {
     CarCard,
     CarDetails,
     ShowMore,
-    Loader
+    Loader,
+    Modal,
+    LoginLayout
 }

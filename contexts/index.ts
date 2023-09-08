@@ -9,3 +9,12 @@ export interface Filter {
 }
   
 export const FilterContext = createContext<any>(null)
+
+export const ModalContext = createContext<{
+    isOpen: boolean, 
+    openModal: () => void,
+    closeModal: () => void}>({
+        isOpen: false,
+        openModal: () => {},
+        closeModal: () => {}
+})
