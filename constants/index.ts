@@ -1,4 +1,5 @@
 export const manufacturers = [
+    "All",
     "Acura",
     "Alfa Romeo",
     "Aston Martin",

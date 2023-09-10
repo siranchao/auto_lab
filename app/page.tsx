@@ -43,8 +43,8 @@ export default function Home() {
       } else {
         setCurrentItems(data.length)
         setEof(false)
-        setAllCars(data)
       }
+      setAllCars(data)
       
     } catch(error) {
       console.log(error)

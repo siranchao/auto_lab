@@ -8,6 +8,10 @@ export async function fetchCars(filters: FilterProps): Promise<CarProps[]> {
 	}
     const url = new URL('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars');
 
+    if(filters.make === "All") {
+        filters.make = ""
+    }
+
     Object.entries(filters).forEach(([key, value]) => {
         url.searchParams.append(key, value)
     })
